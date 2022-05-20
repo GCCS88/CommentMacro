@@ -1,0 +1,251 @@
+import java.awt.Robot;
+import java.awt.event.InputEvent;
+
+public class Log_in {
+	
+	public void log_in(String a,String b) {
+		ClipboardCP cm=new ClipboardCP();
+		
+		cm.copy("https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com");
+		
+		try {
+			Robot r=new Robot();			
+			
+			r.delay(300);
+			r.mouseMove(273,56);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);			
+			
+			r.keyPress(17);
+			r.keyPress(86);
+			r.keyRelease(86);
+			r.keyRelease(17);
+			
+			r.delay(300);
+			r.keyPress(10);
+			r.keyRelease(10);
+			r.delay(300);
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		cm.copy(a);		
+		
+		try {
+			Robot r=new Robot();			
+			
+			r.mouseMove(1133,412);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);			
+			
+			r.keyPress(17);
+			r.keyPress(86);
+			r.keyRelease(86);
+			r.keyRelease(17);
+			r.delay(500);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		cm.copy(b);
+		
+		try {
+			Robot r=new Robot();			
+			r.keyPress(9);
+			r.keyRelease(9);
+			
+			r.delay(300);
+			r.keyPress(17);
+			r.keyPress(86);
+			r.keyRelease(86);
+			r.keyRelease(17);
+			
+			r.delay(300);
+			r.keyPress(10);
+			r.keyRelease(10);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void cafe_inH() {
+		ClipboardCP cm=new ClipboardCP();
+		cm.copy("https://cafe.naver.com/healim0071");
+		
+		try {
+			Robot r=new Robot();
+			r.delay(300);
+			r.mouseMove(268,18);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(300);
+			r.mouseMove(273,56);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);			
+			
+			r.keyPress(17);
+			r.keyPress(86);
+			r.keyRelease(86);
+			r.keyRelease(17);
+			
+			r.delay(300);
+			r.keyPress(10);
+			r.keyRelease(10);
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void cafe_inS() {
+		ClipboardCP cm=new ClipboardCP();
+		cm.copy("https://cafe.naver.com/sasave1");
+		
+		try {
+			Robot r=new Robot();
+			r.delay(300);
+			r.mouseMove(268,18);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(300);
+			r.mouseMove(273,56);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);			
+			
+			r.keyPress(17);
+			r.keyPress(86);
+			r.keyRelease(86);
+			r.keyRelease(17);
+			
+			r.delay(500);
+			r.keyPress(10);
+			r.keyRelease(10);
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	public void cafe_out() {
+		
+		try {
+			Robot r=new Robot();
+			r.delay(300);
+			r.mouseMove(469,17);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);			
+			r.delay(300);			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void log_out() {
+		ClipboardCP cm=new ClipboardCP();
+		cm.copy("https://nid.naver.com/nidlogin.logout?returl=https://cafe.naver.com/Logout.nhn?alreadyNaverLogout=true");
+		
+		try {
+			Robot r=new Robot();
+			r.delay(300);
+			r.mouseMove(273,56);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.keyPress(17);
+			r.keyPress(86);
+			r.keyRelease(86);
+			r.keyRelease(17);
+			
+			r.delay(300);
+			r.keyPress(10);
+			r.keyRelease(10);
+			
+			r.delay(600);
+			r.mouseMove(471,16);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(300);
+			r.keyPress(116);
+			r.keyRelease(116);
+			r.delay(300);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void cafeClickH() {
+		try {
+			Robot r=new Robot();			
+			
+			r.delay(500);
+			r.mouseMove(2405,249);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(1000);
+			r.mouseWheel(1);
+			
+			r.delay(1000);
+			r.mouseMove(736,1012);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(1000);
+			//r.mouseMove(1150,253);
+			r.mouseMove(1139,666);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void cafeClickS() {
+		try {
+			Robot r=new Robot();
+			r.delay(500);
+			r.mouseMove(734,1050);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(1000);
+			r.mouseMove(1144,254);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		Log_in li=new Log_in();
+		EnterComment ec=new EnterComment();
+		li.log_in("healim0072", "whtmdfo12~~");
+		li.cafe_inH();
+		ec.delayMs(1000);
+		li.cafeClickH();
+		ec.delayMs(1000);		
+		
+		//li.cafe_out();
+		//ec.delayMs(1000);
+		//li.log_out();
+		
+		//ec.like();
+		
+		
+	}
+}
