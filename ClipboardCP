@@ -1,0 +1,17 @@
+import java.awt.datatransfer.*;
+
+import java.awt.Toolkit;
+
+
+
+public class ClipboardCP {
+	String Clip;
+	
+	public void copy(String a) {
+		String ctc = a;
+	    StringSelection stringSelection = new StringSelection(ctc);
+	    Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+	    clpbrd.setContents(stringSelection, null);
+	}
+	
+}
