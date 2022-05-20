@@ -1,0 +1,154 @@
+import java.util.Random;
+
+public class RandomComment {
+	Random a=new Random();
+	static String[] randomID= {"11채널 uamtil46fc whtmdfo12~~!!"
+								,"12채널 farewe5074 whtmdfo12~~"
+								,"13채널 g7tt5_0fgascblxo whtmdfo12~~"
+								,"13채널 eenmi40676 m3d1a3ml"
+								,"17채널 xexgvcpe6 whtmdfo12~~"
+								,"16채널 andrew9017 rlaehddhks01"
+								,"X채널 healimbr whtmdfo12~~"
+								,"4채널 sunzu4611 1234qwer"
+								,"5채널 tgupbazcrhd765 great3026!!"
+								,"12채널 tera0801 whtmdfo12~~"
+								,"5채널 llnear dlfclf9017**"
+								,"16채널 estgogo whtmdfo12~~!!"
+								};
+	
+	static String[] randomComm= {"꾸준한 치료로 해결할 수 있어요!"
+								,"평상시 생활습관도 되돌아봅시다^^"
+								,"평소 습관도 중요해요"
+								,"미리미리 대비합시다!"
+								,"나에게 맞는 치료로 개선합시다"
+								,"얼마든지 이겨낼 수 있어요!"
+								,"힘냅시다:)"
+								,"증상에 알맞은 치료로 해결할 수 있어요!!"
+								,"건강한 내일을 위해~"
+								,"오늘도 잘 보고 가요~^^"
+								,"좋은 정보 항상 감사합니다~!"
+								,"오늘 하루도 화이팅~!"
+								,"한의원에서 증상에 맞는 다양한 치료를 받아봐요"
+								};
+	
+	static String[] emotionIDPW= {"rkdekgml314 whtmdfo12~~!!",
+								"zxc95145 zxcasdqwe123!",
+								"ydnaqnsxjnaof whtmdfo12~~",
+								"healim0072 whtmdfo12~~",
+								"mmd4inss great3026!!",
+								"edwin213 great3026**"
+	};
+	
+	
+	int[] randomNumberID=new int[randomID.length];
+	int[] randomNumberComm=new int[randomID.length];
+	int[] randomNumberEmotion=new int[4];
+	static String[] todayComm=new String[randomID.length];
+	static String[] todayIDPW=new String[randomID.length];
+	static String[] todayEmotionIDPW=new String[4];
+	static String[] splitID=new String[randomID.length];
+	static String[] splitPW=new String[randomID.length];
+	static String[] splitEmotionID=new String[todayEmotionIDPW.length];
+	static String[] splitEmotionPW=new String[todayEmotionIDPW.length];
+	
+	public void randomNumber() {		
+		for(int i=0; i<randomID.length; i++) {
+			randomNumberID[i]=a.nextInt(randomID.length);
+			for(int j=0;j<i;j++) {
+				if(randomNumberID[i]==randomNumberID[j]) {
+					i--;
+				}
+			}
+		}		
+	}
+	
+	public void randomComment() {
+		for(int i=0; i<randomID.length; i++) {
+			randomNumberComm[i]=a.nextInt(randomComm.length);
+			for(int j=0;j<i;j++) {
+				if(randomNumberComm[i]==randomNumberComm[j]) {
+					i--;
+				}
+			}
+		}
+	}
+	
+	public void randomEmotion() {
+		for(int i=0; i<randomNumberEmotion.length; i++) {
+			randomNumberEmotion[i]=a.nextInt(emotionIDPW.length);
+			for(int j=0;j<i;j++) {
+				if(randomNumberEmotion[i]==randomNumberEmotion[j]) {
+					i--;
+				}
+			}
+		}
+	}
+	
+	public void selectComm() {
+		randomNumber();
+		randomComment();
+		for(int i=0;i<randomID.length;i++) {
+			todayIDPW[i]=randomID[randomNumberID[i]];
+			todayComm[i]=randomComm[randomNumberComm[i]];
+		}
+	}
+	
+	public void selectEmotion() {
+		randomEmotion();		
+		for(int i=0;i<todayEmotionIDPW.length;i++) {
+			todayEmotionIDPW[i]=emotionIDPW[randomNumberEmotion[i]];
+		}
+	}
+	
+	public void splitIDPW() {
+		for(int i=0;i<todayIDPW.length;i++) {
+			String[] s=todayIDPW[i].split(" ");
+			splitID[i]=s[1];		
+			splitPW[i]=s[2];						
+		}
+	}
+	
+	public void splitEmotionIDPW() {
+		for(int i=0;i<todayEmotionIDPW.length;i++) {
+			String[] s=todayEmotionIDPW[i].split(" ");
+			splitEmotionID[i]=s[0];		
+			splitEmotionPW[i]=s[1];
+		}
+	}
+	
+	public void commentView() {
+		for(int i=0;i<todayComm.length;i++) {
+			System.out.println(todayComm[i]);
+			System.out.println(todayIDPW[i]);
+			System.out.println();
+		}
+	}
+	
+	public void EmotionView() {
+		for(int i=0;i<todayEmotionIDPW.length;i++) {
+			System.out.println(todayEmotionIDPW[i]);			
+			System.out.println();
+		}
+	}
+	
+	public void IDPWView() {
+		for(int i=0;i<splitID.length;i++) {
+			System.out.println(splitID[i]);
+			System.out.println(splitPW[i]);
+			System.out.println();
+		}
+	}	
+	
+	
+	public static void main(String[] args) {
+		RandomComment rc=new RandomComment();
+		rc.selectComm();
+		rc.commentView();
+		rc.splitIDPW();
+		rc.IDPWView();
+
+
+	}	
+	
+	
+}
