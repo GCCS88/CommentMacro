@@ -1,0 +1,219 @@
+import java.awt.Robot;
+
+import java.awt.event.InputEvent;
+import java.util.Random;
+
+
+public class EnterComment {
+	
+	static int heightCommet=12;
+	static int heightCommet2=3;
+	
+	public void like() {
+		try {
+			Robot r=new Robot();
+			r.delay(300);
+			r.mouseMove(1702,291);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(300);
+			r.mouseWheel(-1);
+			
+			r.delay(300);
+			r.mouseMove(960,184);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(300);
+			r.mouseWheel(1);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void commentText(int a) {
+		try {
+			Robot r=new Robot();			
+			
+			
+			r.delay(300);
+			scroll(2*a);			
+			
+			r.delay(600);
+			r.mouseMove(1030,230+(a*heightCommet));
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(300);
+			r.keyPress(17);
+			r.keyPress(86);
+			r.keyRelease(86);
+			r.keyRelease(17);
+			
+			r.delay(300);
+			r.mouseMove(1794,263+(a*heightCommet));
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(1000);
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void commentEmoticon(int a) {
+		Random ramdom=new Random();
+		int g=ramdom.nextInt(6);
+		int[][] k= {{1084,530},{1084,640},{1084,750},{1326,530},{1326,640},{1326,750}};
+		int g1=k[g][0];
+		int g2=k[g][1];
+		
+		if(a==0) {
+			a=ramdom.nextInt(2);
+		}
+		else if(a==1) {
+			a=ramdom.nextInt(3)+2;
+		}
+		else if(a==2) {
+			a=ramdom.nextInt(2)+5;
+		}
+		else if(a==3) {
+			a=ramdom.nextInt(3)+7;
+		}
+		
+		try {
+			Robot r=new Robot();			
+			
+			r.delay(1000);
+			scroll(18-(2*a));
+			r.delay(300);
+			r.mouseMove(1142,235+((9-a)*heightCommet));
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);			
+			
+			r.delay(300);			
+			r.mouseMove(1070,368+((9-a)*heightCommet));
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			
+			
+			r.delay(300);
+			r.mouseMove(g1,g2+((9-a)*heightCommet));
+			
+			r.delay(600);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+			r.delay(600);
+			r.mouseMove(1791,436+((9-a)*heightCommet));
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			r.delay(1000);
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void nextBoardH() {
+		try {
+			Robot r=new Robot();
+			r.delay(300);
+			
+			r.keyPress(36);
+			r.keyRelease(36);
+			
+			r.delay(1000);
+			r.mouseMove(1756,609);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void nextBoardS() {
+		try {
+			Robot r=new Robot();
+			r.delay(300);
+			
+			r.keyPress(36);
+			r.keyRelease(36);
+			
+			r.delay(1000);
+			r.mouseMove(1756,591);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void nextBoard(int a) {
+		if(a==1) {
+			nextBoardH();
+		}
+		else if(a==2) {
+			nextBoardS();
+		}
+	}
+	
+	public void delayMs(int s) {
+		try {
+			Robot r=new Robot();
+			r.delay(s);
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void testClick() {
+		try {
+			Robot r=new Robot();
+			r.mouseMove(2405,249);
+			r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+			r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			r.delay(300);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void scroll(int a) {
+		try {
+			Robot r=new Robot();
+			for(int i=0;i<a;i++) {
+				r.keyPress(40);
+				r.keyRelease(40);
+			}			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		EnterComment a=new EnterComment();
+		ClipboardCP cp=new ClipboardCP();
+		
+		a.testClick();
+		a.delayMs(1000);
+		a.like();
+		a.delayMs(1000);
+		a.commentText(0);
+
+	}
+}
