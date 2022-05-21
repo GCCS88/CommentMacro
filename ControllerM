@@ -1,0 +1,279 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+public class ControllerM {
+	Scanner s=new Scanner(System.in);
+	EnterComment ec=new EnterComment();
+	int[] typeNumberSetH;
+	int[] typeNumberSetS;
+	int[] newTypeNumberSetS;
+	int[] newTypeNumberSetH;
+	int[] oneIndexH;
+	int[] oneIndexS;
+	
+	public int[] commentTypeNumber(int a) {
+		int[] S=new int[a];
+		for(int i=0;i<a;i++) {
+			S[i]=s.nextInt();
+		}
+		return S;
+	}	
+	
+	public void boardClassification1(int a) {
+		if(a==1) {
+			
+		}
+		else if(a==2) {
+			
+		}
+	}
+	
+	public void boardClassification2(int a,int b,int c) {//a:게시글 타입 b:댓글 갯수 c:카페 상수
+		if(a==1) {
+			ec.delayMs(1000);
+			ec.like();
+			ec.delayMs(1000);
+			ec.commentText(b);
+			ec.nextBoard(c);
+			ec.delayMs(2000);
+			
+		}
+		else if(a==2) {
+			ec.nextBoard(c);
+			ec.delayMs(2000);
+		}
+	}
+	
+	public void boardClassification3(int a,int b,int c) {//a:게시글 타입 b:몇번째 댓글인지 c:카페 상수
+		if(a==1) {
+			ec.delayMs(1000);
+			ec.like();
+			ec.delayMs(1000);
+			ec.commentEmoticon(b);
+			ec.nextBoard(c);
+			ec.delayMs(2000);
+			
+		}
+		else if(a==2) {
+			ec.nextBoard(c);
+			ec.delayMs(2000);
+		}
+	}
+	
+	public void autoComment(int a,String b, int[] c, int d, int e) {//a:게시글 갯수 b:입력 댓글 c:게시글 타입
+		ControllerM cm=new ControllerM();					                  	//d:몇번째 댓글인지 e:카페 상수	
+		ClipboardCP cp=new ClipboardCP();	       
+		cp.copy(b); 
+		for(int i=0; i<a;i++) { 
+			cm.boardClassification2(c[i], d, e);
+		}
+	}
+	
+	public void autoEmotion(int a,int[] c, int d, int e) {//a:게시글 갯수 b:입력 댓글 c:게시글 타입
+		ControllerM cm=new ControllerM();	  			          //d:몇번째 댓글인지 e:카페 상수	
+		for(int i=0; i<a;i++) { 
+			cm.boardClassification3(c[i], d, e);
+		}
+	}
+	
+	public void autoWork(int a,int b, int c, ControllerM d) {//a:아이디 갯수 b:헤아림 게시글 수 c: 사사베 게시글 수
+		RandomComment rc=new RandomComment();
+		ControllerM cm=new ControllerM();
+		EnterComment ec=new EnterComment();
+		d.typeNumberSetH=commentTypeNumber(b);
+		d.typeNumberSetS=commentTypeNumber(c);
+		
+		Log_in li=new Log_in();
+		rc.selectComm();
+		rc.splitIDPW();
+		rc.commentView();
+		for(int i=0;i<a;i++) {
+			li.log_in(RandomComment.splitID[i], RandomComment.splitPW[i]);
+			li.cafe_inH();
+			ec.delayMs(2000);
+			li.cafeClickH();
+			ec.delayMs(2000);
+			cm.autoComment(b, RandomComment.todayComm[i],typeNumberSetH,i,1);
+			ec.delayMs(2000);
+			li.cafe_out();
+			ec.delayMs(500);
+			li.cafe_inS();
+			ec.delayMs(2000);
+			li.cafeClickS();
+			ec.delayMs(2000);
+			cm.autoComment(c, RandomComment.todayComm[i],typeNumberSetS,i,2);
+			ec.delayMs(2000);
+			li.cafe_out();
+			li.log_out();
+			ec.delayMs(2000);
+		}
+	}
+	
+	public void autoFix(int a,int b, int c, ControllerM d) {//정상 동작하지 않았을 때 
+		RandomComment rc=new RandomComment();
+		ControllerM cm=new ControllerM();
+		EnterComment ec=new EnterComment();
+		d.typeNumberSetH=commentTypeNumber(b);
+		d.typeNumberSetS=commentTypeNumber(c);
+		
+		Log_in li=new Log_in();
+		rc.selectComm();
+		rc.splitIDPW();
+		rc.commentView();
+		for(int i=0;i<a;i++) {
+			li.log_in(RandomComment.splitID[i], RandomComment.splitPW[i]);
+			li.cafe_inH();
+			ec.delayMs(2000);
+			li.cafeClickH();
+			ec.delayMs(2000);
+			cm.autoComment(b, RandomComment.todayComm[i],typeNumberSetH,i,1);
+			ec.delayMs(2000);			
+			li.cafe_out();
+			li.log_out();
+			ec.delayMs(2000);
+		}
+	}
+	
+	public void autoWorkC(int a,int b, int c, ControllerM d) {////a:아이디 갯수 b:헤아림 게시글 수 c: 사사베 게시글 수
+		ControllerM cm=new ControllerM();
+		EnterComment ec=new EnterComment();
+
+		Log_in li=new Log_in();
+		
+		List<Integer> ilh=new ArrayList<>();
+		List<Integer> ils=new ArrayList<>();
+		
+		for(int i=0;i<b;i++) {
+			ilh.add(10);
+		}
+		
+		for(int i=0;i<c;i++) {
+			ils.add(10);
+		}
+	
+
+		for(int i=0;i<a;i++) {
+			d.autoConversion(d);
+			li.log_in(RandomComment.splitID[i+10], RandomComment.splitPW[i+10]);
+			li.cafe_inH();
+			ec.delayMs(2000);
+			li.cafeClickH();
+			ec.delayMs(2000);
+			cm.autoComment(b, RandomComment.todayComm[i+10],newTypeNumberSetH,ilh.get(i),1);
+			if(newTypeNumberSetH[i]==1) ilh.set(i, ilh.get(i)+1);
+			ec.delayMs(2000);
+			li.cafe_out();
+			ec.delayMs(500);
+			li.cafe_inS();
+			ec.delayMs(2000);
+			li.cafeClickS();
+			ec.delayMs(2000);
+			cm.autoComment(c, RandomComment.todayComm[i+10],newTypeNumberSetS,ils.get(i),2);
+			if(newTypeNumberSetS[i]==1) ilh.set(i, ils.get(i)+1);
+			ec.delayMs(2000);
+			li.cafe_out();
+			li.log_out();
+			ec.delayMs(2000);
+		}
+	}
+	
+	
+	
+	public void autoWorkE(int a,int b, int c, ControllerM d) {//a:아이디 갯수 b:헤아림 게시글 수 c: 사사베 게시글 수
+		ControllerM cm=new ControllerM();
+		EnterComment ec=new EnterComment();
+		RandomComment rc=new RandomComment();
+		Log_in li=new Log_in();		
+
+
+		rc.selectEmotion();
+		rc.splitEmotionIDPW();
+		rc.EmotionView();	
+
+		for(int i=0;i<a;i++) {
+			d.autoConversion(d);
+			li.log_in(RandomComment.splitEmotionID[i], RandomComment.splitEmotionPW[i]);
+			li.cafe_inH();
+			ec.delayMs(2000);
+			li.cafeClickH();
+			ec.delayMs(2000);
+			cm.autoEmotion(b, newTypeNumberSetH, i, 1);;
+			ec.delayMs(2000);
+			li.cafe_out();
+			ec.delayMs(500);
+			li.cafe_inS();
+			ec.delayMs(2000);
+			li.cafeClickS();
+			ec.delayMs(2000);
+			cm.autoEmotion(c, newTypeNumberSetS, i, 2);
+			ec.delayMs(2000);			
+			li.log_out();
+			ec.delayMs(2000);
+		}
+	}
+	
+
+	
+	public int[] conversionLA(int[] a) {//a: typeNumberSet 배열
+		List<Integer> list					  
+		= Arrays.stream(a)
+		.boxed()
+		.collect(Collectors.toList());
+		
+		List<Integer> list2=new ArrayList<>();
+		
+		for(int i=0;i<list.size();i++) {
+			if(list.get(i)==1) {
+				list2.add(i);
+			}
+		}
+		int[] b=new int[list2.size()];
+		b=list2.stream().mapToInt(i -> i).toArray();
+		return b;
+	}
+	
+	public int[] oneToTwo(int[] a,int[] b) {//a: typeNumberSet 배열, //b:oneIdex 배열
+		Random r=new Random();
+		
+		int[] a1=new int[b.length/2];
+		int[] c=new int[a.length];
+		
+		for(int i=0;i<a.length;i++) {
+	         c[i]=a[i];
+	      }
+		
+		for(int i=0; i<a1.length;i++) {
+			a1[i]=r.nextInt(b.length);
+			for(int j=0;j<i;j++) {
+				if(a1[i]==a1[j]) {
+					i--;
+				}
+			}			
+		}
+		
+		for(int i=0; i<a1.length;i++) {
+			c[b[a1[i]]]=2; //2는 게시글 타입 상수
+		}
+		return c;
+	}
+	
+	public void autoConversion(ControllerM cm) {
+		cm.oneIndexH=cm.conversionLA(cm.typeNumberSetH);
+		cm.oneIndexS=cm.conversionLA(cm.typeNumberSetS);
+		cm.newTypeNumberSetH=cm.oneToTwo(cm.typeNumberSetH, cm.oneIndexH);
+		cm.newTypeNumberSetS=cm.oneToTwo(cm.typeNumberSetS, cm.oneIndexS);
+	}
+
+	public static void main(String[] args) {
+		ControllerM cm=new ControllerM();
+		EnterComment ec=new EnterComment();
+		cm.autoWork(10, 3, 1, cm);
+		cm.autoWorkC(2, 3, 1, cm);
+		cm.autoWorkE(4, 3, 1, cm);
+		
+	}
+}
